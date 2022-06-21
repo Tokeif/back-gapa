@@ -1,0 +1,14 @@
+spring:
+  profiles:
+    active: dev
+---
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+logging:
+  level:
+    org.hibernate.SQL: DEBUG

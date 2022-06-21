@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: jdbc:mysql://106.55.61.115:20323/gapa
+    username: root
+    password: root_123456
+
+logging:
+  level:
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
