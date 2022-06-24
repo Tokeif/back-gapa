@@ -1,4 +1,4 @@
-package art.gapa.domain.collage.entity;
+package art.gapa.domain.collage;
 
 import art.gapa.common.web.domain.BaseEntity;
 import lombok.Getter;
