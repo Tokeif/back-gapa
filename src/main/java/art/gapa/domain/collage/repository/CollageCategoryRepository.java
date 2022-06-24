@@ -1,7 +1,7 @@
 package art.gapa.domain.collage.repository;
 
 import art.gapa.common.web.repository.BaseRepository;
-import art.gapa.domain.collage.entity.CollageCategory;
+import art.gapa.domain.collage.CollageCategory;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 

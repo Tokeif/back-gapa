@@ -1,7 +1,7 @@
 package art.gapa.controller.collage.assembler;
 
 import art.gapa.controller.collage.vo.NewCollageActivityVO;
-import art.gapa.domain.collage.entity.CollageCategory;
+import art.gapa.domain.collage.CollageCategory;
 import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 
