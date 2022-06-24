@@ -19,7 +19,7 @@ import java.time.LocalDateTime;
 @Setter
 @Entity
 @Where(clause = BaseEntity.WHERE_CLAUSE)
-public class CollageCategory extends BaseEntity {
+public class CollageType extends BaseEntity {
 
     /**
      * 藏品名

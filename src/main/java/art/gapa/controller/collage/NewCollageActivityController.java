@@ -4,7 +4,7 @@ import art.gapa.common.web.R;
 import art.gapa.controller.collage.assembler.NewCollageActivityAssembler;
 import art.gapa.controller.collage.query.NewCollageActivityQuery;
 import art.gapa.controller.collage.vo.NewCollageActivityVO;
-import art.gapa.domain.collage.CollageCategory;
+import art.gapa.domain.collage.CollageType;
 import art.gapa.domain.collage.repository.CollageCategoryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
@@ -31,7 +31,7 @@ public class NewCollageActivityController {
     @GetMapping
     public R<List<NewCollageActivityVO>> findActivities(NewCollageActivityQuery query) {
         PageRequest request = PageRequest.of(query.getPage() - 1, query.getPageSize());
-        List<CollageCategory> list = collageCategoryRepository.findAll(request);
+        List<CollageType> list = collageCategoryRepository.findAll(request);
         return R.ok(activityAssembler.toVOList(list));
     }
 

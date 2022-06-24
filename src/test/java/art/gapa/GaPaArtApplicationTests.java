@@ -1,6 +1,6 @@
 package art.gapa;
 
-import art.gapa.domain.collage.entity.CollageCategory;
+import art.gapa.domain.collage.CollageType;
 import art.gapa.domain.collage.repository.CollageCategoryRepository;
 import com.google.common.collect.Lists;
 import org.assertj.core.api.Assertions;
@@ -21,7 +21,7 @@ class GaPaArtApplicationTests {
 
     @Test
     void initializeDataForTest() {
-        List<CollageCategory> list = Lists.newArrayListWithExpectedSize(200);
+        List<CollageType> list = Lists.newArrayListWithExpectedSize(200);
 
         for (int i = 1; i < 200; i++) {
             String name = UUID.randomUUID().toString();
@@ -32,13 +32,13 @@ class GaPaArtApplicationTests {
             list.add(collageCategory(name, price, numberLimit, releaseTime));
         }
 
-        for (CollageCategory collage : list) {
+        for (CollageType collage : list) {
             Assertions.assertThat(collageCategoryRepository.save(collage).getId()).isNotNull();
         }
     }
 
-    CollageCategory collageCategory(String name, String price, int numberLimit, LocalDateTime releaseTime) {
-        CollageCategory o = new CollageCategory();
+    CollageType collageCategory(String name, String price, int numberLimit, LocalDateTime releaseTime) {
+        CollageType o = new CollageType();
         o.setName(name);
         o.setPrice(new BigDecimal(price));
         o.setNumberLimit(numberLimit);
