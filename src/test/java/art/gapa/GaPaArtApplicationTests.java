@@ -38,8 +38,8 @@ class GaPaArtApplicationTests {
                         "藏品" + i + "-" + j,
                         series,
                         String.valueOf(j * 10),
+                        j * 100 * i,
                         j * 100,
-                        j * 50,
                         "2022-07-0" + j + "T00:00:00.000000",
                         "https://static.ibox.art/file/oss/test/image/nft-goods/2be99fdd12b449c5b8455c4af41434f5.jpg?style=st6",
                         "藏品描述" + i + "-" + j
