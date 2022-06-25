@@ -69,12 +69,12 @@ public class CollageType extends BaseEntity {
      * 图片地址
      */
     @Column(nullable = false, columnDefinition = "LONGTEXT")
-    private LocalDateTime picture;
+    private String picture;
 
     /**
      * 作品描述
      */
-    @Column(nullable = false, columnDefinition = "LONGTEXT")
-    private LocalDateTime description;
+    @Column(nullable = false, columnDefinition = "TEXT")
+    private String description;
 
 }

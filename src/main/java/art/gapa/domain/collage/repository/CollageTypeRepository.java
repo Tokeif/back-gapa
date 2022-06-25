@@ -11,7 +11,7 @@ import java.util.List;
  * @author JoverZhang
  */
 @Repository
-public interface CollageCategoryRepository extends BaseRepository<CollageType, Long> {
+public interface CollageTypeRepository extends BaseRepository<CollageType, Long> {
 
     List<CollageType> findAll(Pageable pageable);
 
