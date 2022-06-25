@@ -35,4 +35,11 @@ public class UserInfo extends BaseEntity {
     @Column(nullable = false, length = 20)
     private String phone;
 
+    public static UserInfo create(String username, String phone) {
+        UserInfo o = new UserInfo();
+        o.setUsername(username);
+        o.setPhone(phone);
+        return o;
+    }
+
 }
