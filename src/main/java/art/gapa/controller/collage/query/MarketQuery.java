@@ -1,6 +1,6 @@
 package art.gapa.controller.collage.query;
 
-import art.gapa.common.web.domain.BaseQuery;
+import art.gapa.common.web.domain.PaginationQuery;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -13,7 +13,7 @@ import javax.validation.constraints.Min;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class NewCollageActivityQuery extends BaseQuery {
+public class MarketQuery extends PaginationQuery {
 
     @Max(2)
     @Min(0)

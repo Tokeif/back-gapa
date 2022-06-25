@@ -11,18 +11,24 @@ import java.math.BigDecimal;
  * @author JoverZhang
  */
 @Data
-public class NewCollageActivityVO {
+public class NewProductVO {
 
     @Schema(title = "id")
     private Long id;
 
+    @Schema(title = "系列名")
+    private String seriesName;
+
     @Schema(title = "藏品名")
-    private String name;
+    private String collageName;
+
+    @Schema(title = "是否有货")
+    private Boolean inStock;
 
     @Schema(title = "藏品售价")
-    private BigDecimal price;
+    private BigDecimal releasePrice;
 
-    @Schema(title = "藏品数量上限")
-    private Integer numberLimit;
+    @Schema(title = "图片地址")
+    private String picture;
 
 }
