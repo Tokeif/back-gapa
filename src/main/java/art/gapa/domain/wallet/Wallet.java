@@ -35,4 +35,11 @@ public class Wallet extends BaseEntity {
     @Column(nullable = false, precision = 11, scale = 2)
     private BigDecimal amount;
 
+    public static Wallet create(long userId) {
+        Wallet wallet = new Wallet();
+        wallet.setUserId(userId);
+        wallet.setAmount(BigDecimal.ZERO);
+        return wallet;
+    }
+
 }
