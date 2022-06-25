@@ -56,6 +56,16 @@ public class WalletTransaction extends BaseEntity {
     @Column(nullable = false, precision = 11, scale = 2)
     private BigDecimal balance;
 
+    public static WalletTransaction create(long walletId, long orderId, Type type, BigDecimal amount, BigDecimal balance) {
+        WalletTransaction transaction = new WalletTransaction();
+        transaction.setWalletId(walletId);
+        transaction.setOrderId(orderId);
+        transaction.setAmount(amount);
+        transaction.setType(type);
+        transaction.setBalance(balance);
+        return transaction;
+    }
+
     public enum Type {
         /**
          * 收入

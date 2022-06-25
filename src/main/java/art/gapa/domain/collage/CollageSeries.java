@@ -3,6 +3,7 @@ package art.gapa.domain.collage;
 import art.gapa.common.web.domain.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.Column;
@@ -17,6 +18,7 @@ import javax.persistence.Lob;
 @Getter
 @Setter
 @Entity
+@ToString(callSuper = true)
 @Where(clause = BaseEntity.WHERE_CLAUSE)
 public class CollageSeries extends BaseEntity {
 

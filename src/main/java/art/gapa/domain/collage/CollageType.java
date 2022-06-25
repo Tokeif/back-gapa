@@ -3,7 +3,9 @@ package art.gapa.domain.collage;
 import art.gapa.common.web.domain.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.annotations.Where;
+import org.springframework.util.Assert;
 
 import javax.persistence.Column;
 import javax.persistence.ConstraintMode;
@@ -24,8 +26,9 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Entity
-@Table(indexes = @Index(name = "idx_series_id", columnList = "series_id"))
+@ToString(callSuper = true)
 @Where(clause = BaseEntity.WHERE_CLAUSE)
+@Table(indexes = @Index(name = "idx_series_id", columnList = "series_id"))
 public class CollageType extends BaseEntity {
 
     /**
@@ -79,6 +82,14 @@ public class CollageType extends BaseEntity {
 
     public boolean inStock() {
         return getCirculationQuantity() < getReleaseQuantity();
+    }
+
+    /**
+     * 增加流通量
+     */
+    public void increaseCirculationQuantity(int n) {
+        Assert.isTrue(this.circulationQuantity + n <= this.releaseQuantity, "新品余量不足");
+        this.circulationQuantity += n;
     }
 
 }

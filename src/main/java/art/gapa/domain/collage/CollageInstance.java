@@ -3,11 +3,14 @@ package art.gapa.domain.collage;
 import art.gapa.common.web.domain.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.Column;
 import javax.persistence.ConstraintMode;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.ForeignKey;
 import javax.persistence.Index;
 import javax.persistence.JoinColumn;
@@ -22,11 +25,12 @@ import javax.persistence.Table;
 @Getter
 @Setter
 @Entity
+@ToString(callSuper = true)
+@Where(clause = BaseEntity.WHERE_CLAUSE)
 @Table(indexes = {
         @Index(name = "idx_type_id", columnList = "type_id"),
         @Index(name = "idx_user_id", columnList = "userId"),
 })
-@Where(clause = BaseEntity.WHERE_CLAUSE)
 public class CollageInstance extends BaseEntity {
 
     /**
@@ -54,6 +58,15 @@ public class CollageInstance extends BaseEntity {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, columnDefinition = "enum('BEING_HELD', 'BEING_CONSIGNED')")
     private Status status;
+
+    public static CollageInstance create(CollageType type, long userId) {
+        CollageInstance instance = new CollageInstance();
+        instance.setType(type);
+        instance.setNumber(type.getCirculationQuantity());
+        instance.setUserId(userId);
+        instance.setStatus(Status.BEING_HELD);
+        return instance;
+    }
 
     public enum Status {
         /**

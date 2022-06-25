@@ -1,15 +1,13 @@
 package art.gapa.domain.wallet.repository;
 
 import art.gapa.common.web.repository.BaseRepository;
-import art.gapa.domain.wallet.Wallet;
+import art.gapa.domain.wallet.WalletTransaction;
 import org.springframework.stereotype.Repository;
 
 /**
  * @author JoverZhang
  */
 @Repository
-public interface WalletRepository extends BaseRepository<Wallet, Long> {
-
-    Wallet findByUserId(long userId);
+public interface WalletTransactionRepository extends BaseRepository<WalletTransaction, Long> {
 
 }

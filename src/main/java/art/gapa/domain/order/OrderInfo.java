@@ -70,6 +70,19 @@ public class OrderInfo extends BaseEntity {
     @Column(nullable = false, columnDefinition = "enum('PENDING', 'FINISHED')")
     private State state;
 
+    public static OrderInfo create(long userId, long collageId, Origin origin, Type type,
+                                   int quantity, BigDecimal amount) {
+        OrderInfo order = new OrderInfo();
+        order.setUserId(userId);
+        order.setCollageId(collageId);
+        order.setOrigin(origin);
+        order.setType(type);
+        order.setQuantity(quantity);
+        order.setAmount(amount);
+        order.setState(State.PENDING);
+        return order;
+    }
+
     public enum Origin {
         /**
          * 新品

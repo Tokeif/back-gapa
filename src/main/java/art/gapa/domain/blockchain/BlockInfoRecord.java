@@ -25,16 +25,16 @@ import javax.persistence.Table;
 public class BlockInfoRecord extends BaseEntity {
 
     /**
-     * 拥有者 id
-     */
-    @Column(nullable = false)
-    private Long userId;
-
-    /**
      * 藏品 id
      */
     @Column(nullable = false)
     private Long collageId;
+
+    /**
+     * 拥有者 id
+     */
+    @Column(nullable = false)
+    private Long userId;
 
     /**
      * 状态
@@ -47,13 +47,21 @@ public class BlockInfoRecord extends BaseEntity {
      * 合约地址
      */
     @Column(nullable = false)
-    private String contractAddress;
+    private String contractAddress = "";
 
     /**
      * 链上标识
      */
     @Column(nullable = false)
-    private String tokenId;
+    private String tokenId = "";
+
+    public static BlockInfoRecord create(long collageId, long userId) {
+        BlockInfoRecord o = new BlockInfoRecord();
+        o.setCollageId(collageId);
+        o.setUserId(userId);
+        o.setState(State.PENDING);
+        return o;
+    }
 
     public enum State {
         /**
