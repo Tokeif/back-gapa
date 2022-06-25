@@ -9,6 +9,8 @@ import art.gapa.domain.collage.CollageSeries;
 import art.gapa.domain.collage.CollageType;
 import art.gapa.domain.collage.repository.CollageTypeRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.util.Assert;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,7 +34,7 @@ public class NewProductController {
     private final NewProductAssembler assembler;
 
     @GetMapping
-    public R<List<NewProductVO>> pageSearch(NewProductQuery query) {
+    public R<List<NewProductVO>> pageSearch(@Validated NewProductQuery query) {
         return R.ok(repository.findAllByNameStartsWith(query.pageReqeust(), query.getSearch())
                 .stream()
                 .map(v -> assembler.toVO(v, v.getSeries().getName(), v.getSeries().getAutherName(),
