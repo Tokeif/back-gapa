@@ -39,7 +39,7 @@ public class CollageType extends BaseEntity {
      */
     @ManyToOne
     @JoinColumn(nullable = false, foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
-    private CollageType series;
+    private CollageSeries series;
 
     /**
      * 发行价格
