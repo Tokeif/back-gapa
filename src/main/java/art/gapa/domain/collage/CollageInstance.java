@@ -23,7 +23,7 @@ import javax.persistence.Table;
 @Setter
 @Entity
 @Table(indexes = {
-        @Index(name = "idx_category_id", columnList = "category_id"),
+        @Index(name = "idx_type_id", columnList = "type_id"),
         @Index(name = "idx_user_id", columnList = "userId"),
 })
 @Where(clause = BaseEntity.WHERE_CLAUSE)
