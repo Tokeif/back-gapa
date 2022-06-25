@@ -38,13 +38,13 @@ public class UserController {
     public R<String> login(@RequestBody LoginCMD cmd) {
         UserInfo user = repository.findByPhone(cmd.getPhone());
 
+        Assert.isTrue("000000".equals(cmd.getCode()), "验证码不正确");
+
         // 用户未注册
         if (user == null) {
             user = service.register(cmd.getPhone(), cmd.getPhone());
             walletService.createWallet(user.getId());
         }
-
-        Assert.isTrue("000000".equals(cmd.getCode()), "验证码不正确");
 
         return R.ok(jwtUtil.build(user));
     }
