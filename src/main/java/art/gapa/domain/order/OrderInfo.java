@@ -7,6 +7,8 @@ import org.hibernate.annotations.Where;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Index;
 import javax.persistence.Table;
 import java.math.BigDecimal;
@@ -38,12 +40,14 @@ public class OrderInfo extends BaseEntity {
     /**
      * 途径
      */
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false, columnDefinition = "enum('NEW_PRODUCT', 'MARKET')")
     private Origin origin;
 
     /**
      * 交易类型
      */
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false, columnDefinition = "enum('BOUGHT', 'SOLD')")
     private Type type;
 
@@ -62,6 +66,7 @@ public class OrderInfo extends BaseEntity {
     /**
      * 状态
      */
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false, columnDefinition = "enum('PENDING', 'FINISHED')")
     private State state;
 

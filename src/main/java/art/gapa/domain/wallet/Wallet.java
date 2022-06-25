@@ -4,6 +4,7 @@ import art.gapa.common.web.domain.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Where;
+import org.springframework.util.Assert;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -40,6 +41,11 @@ public class Wallet extends BaseEntity {
         wallet.setUserId(userId);
         wallet.setAmount(BigDecimal.ZERO);
         return wallet;
+    }
+
+    public void decreaseAmount(BigDecimal amount) {
+        Assert.isTrue(this.amount.compareTo(amount) >= 0, "余额不足");
+        this.amount = this.amount.subtract(amount);
     }
 
 }

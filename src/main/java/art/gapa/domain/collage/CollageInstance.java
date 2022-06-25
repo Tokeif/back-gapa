@@ -34,7 +34,7 @@ public class CollageInstance extends BaseEntity {
      */
     @ManyToOne
     @JoinColumn(nullable = false, foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
-    private CollageType category;
+    private CollageType type;
 
     /**
      * 藏品编号
@@ -51,6 +51,7 @@ public class CollageInstance extends BaseEntity {
     /**
      * 状态
      */
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false, columnDefinition = "enum('BEING_HELD', 'BEING_CONSIGNED')")
     private Status status;
 

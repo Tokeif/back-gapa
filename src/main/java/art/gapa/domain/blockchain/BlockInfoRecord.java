@@ -39,8 +39,8 @@ public class BlockInfoRecord extends BaseEntity {
     /**
      * 状态
      */
-    @Column(nullable = false, columnDefinition = "enum('PENDING', 'FINISHED')")
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false, columnDefinition = "enum('PENDING', 'FINISHED')")
     private State state;
 
     /**

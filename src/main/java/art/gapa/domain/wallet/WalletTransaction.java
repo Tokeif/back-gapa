@@ -7,6 +7,8 @@ import org.hibernate.annotations.Where;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Index;
 import javax.persistence.Table;
 import java.math.BigDecimal;
@@ -38,6 +40,7 @@ public class WalletTransaction extends BaseEntity {
     /**
      * 类型
      */
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false, columnDefinition = "enum('INCOME', 'OUTGO')")
     private Type type;
 
