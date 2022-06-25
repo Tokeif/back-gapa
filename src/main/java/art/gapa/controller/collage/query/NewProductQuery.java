@@ -12,7 +12,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 public class NewProductQuery extends PaginationQuery {
 
-    @Schema(title = "搜索")
+    @Schema(title = "搜索", nullable = true)
     private String search;
 
 }

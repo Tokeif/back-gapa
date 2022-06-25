@@ -77,4 +77,8 @@ public class CollageType extends BaseEntity {
     @Column(nullable = false, columnDefinition = "TEXT")
     private String description;
 
+    public boolean inStock() {
+        return getCirculationQuantity() < getReleaseQuantity();
+    }
+
 }

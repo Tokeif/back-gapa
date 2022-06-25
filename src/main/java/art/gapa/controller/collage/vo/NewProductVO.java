@@ -19,16 +19,19 @@ public class NewProductVO {
     @Schema(title = "系列名")
     private String seriesName;
 
-    @Schema(title = "藏品名")
-    private String collageName;
+    @Schema(title = "作者名")
+    private String autherName;
 
-    @Schema(title = "是否有货")
-    private Boolean inStock;
+    @Schema(title = "新品名")
+    private String typeName;
 
-    @Schema(title = "藏品售价")
+    @Schema(title = "发行价格")
     private BigDecimal releasePrice;
 
     @Schema(title = "图片地址")
     private String picture;
+
+    @Schema(title = "是否有货")
+    private Boolean inStock;
 
 }
