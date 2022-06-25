@@ -6,6 +6,9 @@ import art.gapa.domain.blockchain.service.BlockInfoRecordService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+/**
+ * @author JoverZhang
+ */
 @Service
 @RequiredArgsConstructor
 public class BlockInfoRecordServiceImpl implements BlockInfoRecordService {
