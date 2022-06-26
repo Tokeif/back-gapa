@@ -19,7 +19,7 @@ public class PaginationQuery {
     @Schema(title = "分页页码")
     private Integer page;
 
-    @Max(200)
+    @Max(50)
     @Min(1)
     @NotNull
     @Schema(title = "分页大小")
