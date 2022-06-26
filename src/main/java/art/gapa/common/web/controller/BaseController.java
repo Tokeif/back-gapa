@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 /**
  * @author JoverZhang
  */
-public class BaseController {
+public abstract class BaseController {
 
     @Setter(onMethod_ = @Autowired)
     private LoginUserUtil loginUserUtil;
