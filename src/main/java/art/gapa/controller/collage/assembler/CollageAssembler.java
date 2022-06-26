@@ -2,8 +2,8 @@ package art.gapa.controller.collage.assembler;
 
 import art.gapa.controller.collage.vo.NewProductDetailVO;
 import art.gapa.controller.collage.vo.NewProductVO;
-import art.gapa.controller.collage.vo.ConsignmentCollageVO;
-import art.gapa.domain.collage.CollageConsignmentRecord;
+import art.gapa.controller.collage.vo.ConsignCollageVO;
+import art.gapa.domain.collage.CollageConsignRecord;
 import art.gapa.domain.collage.CollageInstance;
 import art.gapa.domain.collage.CollageSeries;
 import art.gapa.domain.collage.CollageType;
@@ -40,6 +40,6 @@ public interface CollageAssembler {
     @Mapping(target = "typeName", source = "i.type.name")
     @Mapping(target = "releasePrice", source = "i.type.releasePrice")
     @Mapping(target = "picture", source = "i.type.picture")
-    ConsignmentCollageVO toConsignmentCollageVO(CollageInstance i, CollageConsignmentRecord r);
+    ConsignCollageVO toConsignCollageVO(CollageInstance i, CollageConsignRecord r);
 
 }

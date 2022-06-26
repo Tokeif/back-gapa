@@ -1,6 +1,6 @@
 package art.gapa.controller.collage.vo;
 
-import art.gapa.domain.collage.CollageConsignmentRecord;
+import art.gapa.domain.collage.CollageConsignRecord;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
@@ -10,7 +10,7 @@ import java.math.BigDecimal;
  * @author JoverZhang
  */
 @Data
-public class ConsignmentCollageVO {
+public class ConsignCollageVO {
 
     @Schema(title = "藏品实例 id")
     private Long id;
@@ -34,6 +34,6 @@ public class ConsignmentCollageVO {
     private BigDecimal price;
 
     @Schema(title = "寄售状态")
-    private CollageConsignmentRecord.Status status;
+    private CollageConsignRecord.Status status;
 
 }

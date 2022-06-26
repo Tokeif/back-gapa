@@ -6,12 +6,10 @@ import lombok.Setter;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.Column;
-import javax.persistence.ConstraintMode;
 import javax.persistence.Entity;
-import javax.persistence.ForeignKey;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Index;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.math.BigDecimal;
 
@@ -28,7 +26,7 @@ import java.math.BigDecimal;
         @Index(name = "idx_user_id", columnList = "userId"),
 })
 @Where(clause = BaseEntity.WHERE_CLAUSE)
-public class CollageConsignmentRecord extends BaseEntity {
+public class CollageConsignRecord extends BaseEntity {
 
     /**
      * 藏品实例 id
@@ -52,7 +50,24 @@ public class CollageConsignmentRecord extends BaseEntity {
      * 状态
      */
     @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private Status status;
+
+    public static CollageConsignRecord create(long collageId, long userId, BigDecimal price) {
+        CollageConsignRecord r = new CollageConsignRecord();
+        r.setCollageId(collageId);
+        r.setUserId(userId);
+        r.setPrice(price);
+        r.setStatus(Status.ON_CONSIGNMENT);
+        return r;
+    }
+
+    /**
+     * 正在寄售
+     */
+    public boolean isConsigning() {
+        return status == Status.ON_CONSIGNMENT || status == Status.LOCKING;
+    }
 
     public enum Status {
         /**
