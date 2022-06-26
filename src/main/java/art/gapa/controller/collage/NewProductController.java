@@ -86,10 +86,10 @@ public class NewProductController extends BaseController {
         CollageType type = repository.findById(id).orElseThrow(() -> new IllegalArgumentException("新品不存在"));
         Assert.isTrue(type.inStock(), "新品已售罄");
 
-        // 尝试扣减 钱包的余额
+        // 校验 钱包的余额
         BigDecimal amount = type.getReleasePrice();
         Wallet wallet = walletService.findByUserId(user.getId());
-        wallet.decreaseAmount(amount);
+        wallet.checkForDecreaseAmount(amount);
 
         // 增加新品流通量
         type.increaseCirculationQuantity(quantity);

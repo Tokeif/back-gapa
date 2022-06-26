@@ -86,10 +86,10 @@ public class MarketController extends BaseController {
         long buyUserId = user.getId();
         long sellUserId = collage.getUserId();
 
-        // 尝试扣减 钱包余额
+        // 检验 钱包余额
         BigDecimal amount = collage.getPrice();
         Wallet buyWallet = walletService.findByUserId(buyUserId);
-        buyWallet.decreaseAmount(amount);
+        buyWallet.checkForDecreaseAmount(amount);
 
         // 修改 藏品实例 的拥有者
         collage.setStatus(CollageInstance.Status.BEING_HELD);

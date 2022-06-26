@@ -48,8 +48,12 @@ public class Wallet extends BaseEntity {
     }
 
     public void decreaseAmount(BigDecimal amount) {
-        Assert.isTrue(this.amount.compareTo(amount) >= 0, "余额不足");
+        this.checkForDecreaseAmount(amount);
         this.amount = this.amount.subtract(amount);
+    }
+
+    public void checkForDecreaseAmount(BigDecimal amount) {
+        Assert.isTrue(this.amount.compareTo(amount) >= 0, "余额不足");
     }
 
 }
