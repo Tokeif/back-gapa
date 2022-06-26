@@ -13,6 +13,6 @@ import java.util.List;
 @Repository
 public interface CollageTypeRepository extends BaseRepository<CollageType, Long> {
 
-    List<CollageType> findAllByNameStartsWith(Pageable pageable, String name);
+    List<CollageType> findAllByNameStartsWithOrderByIdDesc(Pageable pageable, String name);
 
 }

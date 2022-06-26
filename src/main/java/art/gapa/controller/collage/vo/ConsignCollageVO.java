@@ -1,6 +1,6 @@
 package art.gapa.controller.collage.vo;
 
-import art.gapa.domain.collage.CollageConsignRecord;
+import art.gapa.domain.collage.CollageInstance;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
@@ -33,7 +33,7 @@ public class ConsignCollageVO {
     @Schema(title = "寄售价格")
     private BigDecimal price;
 
-    @Schema(title = "寄售状态")
-    private CollageConsignRecord.Status status;
+    @Schema(title = "藏品状态")
+    private CollageInstance.Status status;
 
 }

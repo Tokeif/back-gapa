@@ -39,12 +39,14 @@ public interface CollageAssembler {
     @Mapping(target = "seriesName", source = "i.type.series.name")
     @Mapping(target = "typeName", source = "i.type.name")
     @Mapping(target = "picture", source = "i.type.picture")
+    @Mapping(target = "price", source = "i.price")
     MarketCollageVO toMarketCollageVO(CollageInstance i, CollageConsignRecord r);
 
     @Mapping(target = "id", source = "i.id")
     @Mapping(target = "seriesName", source = "i.type.series.name")
     @Mapping(target = "typeName", source = "i.type.name")
     @Mapping(target = "picture", source = "i.type.picture")
+    @Mapping(target = "price", source = "i.price")
     @Mapping(target = "releaseQuantity", source = "i.type.releaseQuantity")
     @Mapping(target = "circulationQuantity", source = "i.type.circulationQuantity")
     @Mapping(target = "seriesDescription", source = "i.type.series.description")
@@ -52,12 +54,13 @@ public interface CollageAssembler {
     MarketCollageDetailVO toMarketCollageDetailVO(CollageInstance i, CollageConsignRecord r);
 
     @Mapping(target = "id", source = "i.id")
-    @Mapping(target = "status", source = "r.status")
+    @Mapping(target = "status", source = "i.status")
     @Mapping(target = "seriesName", source = "i.type.series.name")
     @Mapping(target = "autherName", source = "i.type.series.autherName")
     @Mapping(target = "typeName", source = "i.type.name")
     @Mapping(target = "releasePrice", source = "i.type.releasePrice")
     @Mapping(target = "picture", source = "i.type.picture")
+    @Mapping(target = "price", source = "i.price")
     ConsignCollageVO toConsignCollageVO(CollageInstance i, CollageConsignRecord r);
 
 }

@@ -58,7 +58,7 @@ public class NewProductController extends BaseController {
     @GetMapping
     @Operation(summary = "搜索", tags = NEW_PRODUCT)
     public R<List<NewProductVO>> pageSearch(@Validated SearchQuery query) {
-        return R.ok(repository.findAllByNameStartsWith(query.pageReqeust(), query.getSearch())
+        return R.ok(repository.findAllByNameStartsWithOrderByIdDesc(query.pageReqeust(), query.getSearch())
                 .stream().map(assembler::toNewProductVO).toList());
     }
 

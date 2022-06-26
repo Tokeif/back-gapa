@@ -16,6 +16,7 @@ import javax.persistence.Index;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import java.math.BigDecimal;
 
 /**
  * 藏品实例 (唯一个体)
@@ -53,6 +54,12 @@ public class CollageInstance extends BaseEntity {
     private Long userId;
 
     /**
+     * 寄售价格
+     */
+    @Column(nullable = false)
+    private BigDecimal price;
+
+    /**
      * 状态
      */
     @Enumerated(EnumType.STRING)
@@ -64,6 +71,7 @@ public class CollageInstance extends BaseEntity {
         instance.setType(type);
         instance.setNumber(type.getCirculationQuantity());
         instance.setUserId(userId);
+        instance.setPrice(BigDecimal.ZERO);
         instance.setStatus(Status.BEING_HELD);
         return instance;
     }

@@ -49,7 +49,7 @@ public class UserCollageController extends BaseController {
         }).toList());
     }
 
-    @PostMapping
+    @PostMapping("/consign")
     @Operation(summary = "寄售藏品", tags = USER)
     @Transactional(rollbackFor = Exception.class)
     public R<Void> consignCollage(long collageId, BigDecimal price) {
@@ -64,6 +64,7 @@ public class UserCollageController extends BaseController {
         }
         // 修改 藏品状态
         collage.setStatus(CollageInstance.Status.BEING_CONSIGNED);
+        collage.setPrice(price);
         repository.save(collage);
         // 创建 寄售记录
         consign = CollageConsignRecord.create(collage.getId(), user.getId(), price);
