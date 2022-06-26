@@ -10,6 +10,7 @@ import art.gapa.domain.collage.CollageConsignmentRecord;
 import art.gapa.domain.collage.CollageInstance;
 import art.gapa.domain.collage.repository.CollageConsignmentRecordRepository;
 import art.gapa.domain.collage.repository.CollageInstanceRepository;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,6 +35,7 @@ public class UserCollageController extends BaseController {
     private final CollageConsignmentRecordRepository consignmentRecordRepository;
 
     @GetMapping
+    @Operation(summary = "查询藏品", tags = USER)
     public R<List<ConsignmentCollageVO>> findConsignmentCollages(PaginationQuery query) {
         LoginUser user = loginUser();
         List<CollageInstance> collages = repository.findByUserId(query.pageReqeust(), user.getId());

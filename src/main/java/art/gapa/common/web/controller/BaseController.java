@@ -10,7 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public abstract class BaseController {
 
+    public static final String NEW_PRODUCT = "新品";
+
+    public static final String USER = "用户";
+
     @Setter(onMethod_ = @Autowired)
+
     private LoginUserUtil loginUserUtil;
 
     protected LoginUser loginUser() {

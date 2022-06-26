@@ -17,6 +17,7 @@ import art.gapa.domain.order.OrderInfo;
 import art.gapa.domain.order.service.OrderService;
 import art.gapa.domain.wallet.Wallet;
 import art.gapa.domain.wallet.service.WalletService;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.RequiredArgsConstructor;
 import org.springframework.transaction.annotation.Transactional;
@@ -55,12 +56,14 @@ public class NewProductController extends BaseController {
     private final OrderService orderService;
 
     @GetMapping
+    @Operation(summary = "搜索", tags = NEW_PRODUCT)
     public R<List<NewProductVO>> pageSearch(@Validated NewProductQuery query) {
         return R.ok(repository.findAllByNameStartsWith(query.pageReqeust(), query.getSearch())
                 .stream().map(assembler::toNewProductVO).toList());
     }
 
     @GetMapping("/{id}")
+    @Operation(summary = "详情", tags = NEW_PRODUCT)
     public R<NewProductDetailVO> findById(@PathVariable long id) {
         Optional<CollageType> typeOptional = repository.findById(id);
         if (typeOptional.isEmpty()) {
@@ -72,6 +75,7 @@ public class NewProductController extends BaseController {
     }
 
     @PostMapping("/buy")
+    @Operation(summary = "购买", tags = NEW_PRODUCT)
     @Transactional(rollbackFor = Exception.class)
     public R<Long> buy(@Schema(title = "新品 id") long id) {
         final int quantity = 1;
