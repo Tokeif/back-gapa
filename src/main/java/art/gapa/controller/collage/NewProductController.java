@@ -3,7 +3,7 @@ package art.gapa.controller.collage;
 import art.gapa.common.auth.LoginUser;
 import art.gapa.common.web.R;
 import art.gapa.common.web.controller.BaseController;
-import art.gapa.controller.collage.assembler.NewProductAssembler;
+import art.gapa.controller.collage.assembler.CollageAssembler;
 import art.gapa.controller.collage.query.NewProductQuery;
 import art.gapa.controller.collage.vo.NewProductDetailVO;
 import art.gapa.controller.collage.vo.NewProductVO;
@@ -46,7 +46,7 @@ public class NewProductController extends BaseController {
 
     private final CollageTypeRepository repository;
 
-    private final NewProductAssembler assembler;
+    private final CollageAssembler assembler;
 
     private final CollageService collageService;
 
@@ -57,10 +57,7 @@ public class NewProductController extends BaseController {
     @GetMapping
     public R<List<NewProductVO>> pageSearch(@Validated NewProductQuery query) {
         return R.ok(repository.findAllByNameStartsWith(query.pageReqeust(), query.getSearch())
-                .stream()
-                .map(v -> assembler.toVO(v, v.getSeries().getName(), v.getSeries().getAutherName(),
-                        v.getName(), v.inStock()))
-                .toList());
+                .stream().map(assembler::toNewProductVO).toList());
     }
 
     @GetMapping("/{id}")
@@ -71,8 +68,7 @@ public class NewProductController extends BaseController {
         }
         CollageType type = typeOptional.get();
         CollageSeries series = type.getSeries();
-        return R.ok(assembler.toDetailVO(type, series.getName(), series.getAutherName(), type.getName(),
-                type.inStock(), series.getDescription(), type.getDescription()));
+        return R.ok(assembler.toNewProductVO(series, type));
     }
 
     @PostMapping("/buy")
