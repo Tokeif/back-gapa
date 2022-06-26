@@ -39,6 +39,7 @@ public interface CollageAssembler {
     @Mapping(target = "seriesName", source = "i.type.series.name")
     @Mapping(target = "typeName", source = "i.type.name")
     @Mapping(target = "picture", source = "i.type.picture")
+    @Mapping(target = "releaseQuantity", source = "i.type.releaseQuantity")
     @Mapping(target = "price", source = "i.price")
     MarketCollageVO toMarketCollageVO(CollageInstance i, CollageConsignRecord r);
 
@@ -59,6 +60,7 @@ public interface CollageAssembler {
     @Mapping(target = "autherName", source = "i.type.series.autherName")
     @Mapping(target = "typeName", source = "i.type.name")
     @Mapping(target = "releasePrice", source = "i.type.releasePrice")
+    @Mapping(target = "releaseQuantity", source = "i.type.releaseQuantity")
     @Mapping(target = "picture", source = "i.type.picture")
     @Mapping(target = "price", source = "i.price")
     ConsignCollageVO toConsignCollageVO(CollageInstance i, CollageConsignRecord r);

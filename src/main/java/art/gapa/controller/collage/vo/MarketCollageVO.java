@@ -25,6 +25,9 @@ public class MarketCollageVO {
     @Schema(title = "图片地址")
     private String picture;
 
+    @Schema(title = "发行量")
+    private Integer releaseQuantity;
+
     @Schema(title = "藏品编号")
     private Integer number;
 
