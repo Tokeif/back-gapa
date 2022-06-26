@@ -1,5 +1,6 @@
 package art.gapa.common.auth;
 
+import art.gapa.common.web.exception.UnauthorizedException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
@@ -20,7 +21,11 @@ public class LoginUserUtil {
     public LoginUser loginUser() {
         String authorizations = request.getHeader("Authorization");
         Assert.notNull(authorizations, "Unauthorized");
-        return jwtUtil.parse(authorizations);
+        try {
+            return jwtUtil.parse(authorizations);
+        } catch (RuntimeException e) {
+            throw new UnauthorizedException("未登录");
+        }
     }
 
 }
