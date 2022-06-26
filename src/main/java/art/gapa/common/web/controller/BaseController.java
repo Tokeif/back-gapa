@@ -12,6 +12,8 @@ public abstract class BaseController {
 
     public static final String NEW_PRODUCT = "新品";
 
+    public static final String MARKET = "市场";
+
     public static final String USER = "用户";
 
     @Setter(onMethod_ = @Autowired)
