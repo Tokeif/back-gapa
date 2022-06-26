@@ -13,6 +13,6 @@ import java.util.List;
 @Repository
 public interface OrderRepository extends BaseRepository<OrderInfo, Long> {
 
-    List<OrderInfo> findAllByUserId(PageRequest pageRequest, long userId);
+    List<OrderInfo> findAllByUserIdOrderByIdDesc(PageRequest pageRequest, long userId);
 
 }

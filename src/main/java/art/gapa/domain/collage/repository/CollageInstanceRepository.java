@@ -15,7 +15,7 @@ import java.util.Optional;
 @Repository
 public interface CollageInstanceRepository extends BaseRepository<CollageInstance, Long> {
 
-    List<CollageInstance> findAllByUserId(PageRequest pageRequest, long userId);
+    List<CollageInstance> findAllByUserIdOrderByIdDesc(PageRequest pageRequest, long userId);
 
     @Query("SELECT i FROM CollageInstance i WHERE i.status = :status AND i.type.name LIKE :name% ORDER BY i.id DESC")
     List<CollageInstance> searchByStatus(PageRequest pageRequest, String name, CollageInstance.Status status);

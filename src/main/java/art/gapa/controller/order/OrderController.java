@@ -30,7 +30,7 @@ public class OrderController extends BaseController {
     @Operation(summary = "订单列表", tags = ORDER)
     public R<List<OrderInfo>> findList(PaginationQuery query) {
         LoginUser user = loginUser();
-        return R.ok(repository.findAllByUserId(query.pageReqeust(), user.getId()));
+        return R.ok(repository.findAllByUserIdOrderByIdDesc(query.pageReqeust(), user.getId()));
     }
 
 }

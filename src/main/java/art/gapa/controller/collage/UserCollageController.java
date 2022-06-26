@@ -43,7 +43,7 @@ public class UserCollageController extends BaseController {
     @Transactional(readOnly = true)
     public R<List<ConsignCollageVO>> findConsignCollages(PaginationQuery query) {
         LoginUser user = loginUser();
-        List<CollageInstance> collages = repository.findAllByUserId(query.pageReqeust(), user.getId());
+        List<CollageInstance> collages = repository.findAllByUserIdOrderByIdDesc(query.pageReqeust(), user.getId());
         return R.ok(collages.stream().map(c -> {
             CollageConsignRecord r = consignRecordRepository.findFirstByCollageIdOrderByIdDesc(c.getId());
             return assembler.toConsignCollageVO(c, r);
