@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigDecimal;
@@ -52,7 +53,7 @@ public class UserCollageController extends BaseController {
     @PostMapping("/consign")
     @Operation(summary = "寄售藏品", tags = USER)
     @Transactional(rollbackFor = Exception.class)
-    public R<Void> consignCollage(long collageId, BigDecimal price) {
+    public R<Void> consignCollage(long collageId, @RequestParam BigDecimal price) {
         LoginUser user = loginUser();
         CollageInstance collage = repository.findByIdAndUserId(collageId, user.getId())
                 .orElseThrow(() -> new IllegalArgumentException("藏品不存在"));
