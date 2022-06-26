@@ -3,8 +3,8 @@ package art.gapa.controller.collage;
 import art.gapa.common.auth.LoginUser;
 import art.gapa.common.web.R;
 import art.gapa.common.web.controller.BaseController;
+import art.gapa.common.web.domain.SearchQuery;
 import art.gapa.controller.collage.assembler.CollageAssembler;
-import art.gapa.controller.collage.query.NewProductQuery;
 import art.gapa.controller.collage.vo.NewProductDetailVO;
 import art.gapa.controller.collage.vo.NewProductVO;
 import art.gapa.domain.blockchain.service.BlockInfoRecordService;
@@ -57,7 +57,7 @@ public class NewProductController extends BaseController {
 
     @GetMapping
     @Operation(summary = "搜索", tags = NEW_PRODUCT)
-    public R<List<NewProductVO>> pageSearch(@Validated NewProductQuery query) {
+    public R<List<NewProductVO>> pageSearch(@Validated SearchQuery query) {
         return R.ok(repository.findAllByNameStartsWith(query.pageReqeust(), query.getSearch())
                 .stream().map(assembler::toNewProductVO).toList());
     }
