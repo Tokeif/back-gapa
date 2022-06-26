@@ -1,5 +1,6 @@
 package art.gapa.controller.collage.assembler;
 
+import art.gapa.controller.collage.vo.MarketCollageDetailVO;
 import art.gapa.controller.collage.vo.MarketCollageVO;
 import art.gapa.controller.collage.vo.NewProductDetailVO;
 import art.gapa.controller.collage.vo.NewProductVO;
@@ -39,6 +40,16 @@ public interface CollageAssembler {
     @Mapping(target = "typeName", source = "i.type.name")
     @Mapping(target = "picture", source = "i.type.picture")
     MarketCollageVO toMarketCollageVO(CollageInstance i, CollageConsignRecord r);
+
+    @Mapping(target = "id", source = "i.id")
+    @Mapping(target = "seriesName", source = "i.type.series.name")
+    @Mapping(target = "typeName", source = "i.type.name")
+    @Mapping(target = "picture", source = "i.type.picture")
+    @Mapping(target = "releaseQuantity", source = "i.type.releaseQuantity")
+    @Mapping(target = "circulationQuantity", source = "i.type.circulationQuantity")
+    @Mapping(target = "seriesDescription", source = "i.type.series.description")
+    @Mapping(target = "typeDescription", source = "i.type.description")
+    MarketCollageDetailVO toMarketCollageDetailVO(CollageInstance i, CollageConsignRecord r);
 
     @Mapping(target = "id", source = "i.id")
     @Mapping(target = "status", source = "r.status")
