@@ -7,6 +7,7 @@ import art.gapa.domain.wallet.repository.WalletTransactionRepository;
 import art.gapa.domain.wallet.service.WalletService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 
@@ -33,7 +34,19 @@ public class WalletServiceImpl implements WalletService {
     }
 
     @Override
-    public void decreaseUserWalletAmount(long userId, BigDecimal amount, long orderId) {
+    @Transactional(rollbackFor = Exception.class)
+    public void increaseUserWalletAmountByOrder(long userId, BigDecimal amount, long orderId) {
+        Wallet wallet = repository.findByUserId(userId);
+        wallet.increaseAmount(amount);
+        WalletTransaction transaction = WalletTransaction.create(wallet.getId(), orderId,
+                WalletTransaction.Type.INCOME, amount, wallet.getAmount());
+        repository.save(wallet);
+        transactionRepository.save(transaction);
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void decreaseUserWalletAmountByOrder(long userId, BigDecimal amount, long orderId) {
         Wallet wallet = repository.findByUserId(userId);
         wallet.decreaseAmount(amount);
         WalletTransaction transaction = WalletTransaction.create(wallet.getId(), orderId,

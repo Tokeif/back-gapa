@@ -13,6 +13,8 @@ public interface WalletService {
 
     Wallet createWallet(long  userId);
 
-    void decreaseUserWalletAmount(long userId, BigDecimal amount, long orderId);
+    void increaseUserWalletAmountByOrder(long userId, BigDecimal amount, long orderId);
+
+    void decreaseUserWalletAmountByOrder(long userId, BigDecimal amount, long orderId);
 
 }

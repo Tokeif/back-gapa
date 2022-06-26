@@ -64,7 +64,7 @@ public class NewProductController extends BaseController {
 
     @GetMapping("/{id}")
     @Operation(summary = "详情", tags = NEW_PRODUCT)
-    public R<NewProductDetailVO> findById(@PathVariable long id) {
+    public R<NewProductDetailVO> findById(@Schema(title = "新品 id") @PathVariable long id) {
         Optional<CollageType> typeOptional = repository.findById(id);
         if (typeOptional.isEmpty()) {
             return R.ok();
@@ -75,8 +75,8 @@ public class NewProductController extends BaseController {
     }
 
     @PostMapping("/buy")
-    @Operation(summary = "购买", tags = NEW_PRODUCT)
     @Transactional(rollbackFor = Exception.class)
+    @Operation(summary = "购买", tags = NEW_PRODUCT)
     public R<Long> buy(@Schema(title = "新品 id") long id) {
         final int quantity = 1;
         LoginUser user = loginUser();
@@ -104,7 +104,7 @@ public class NewProductController extends BaseController {
                 OrderInfo.Origin.NEW_PRODUCT, OrderInfo.Type.BOUGHT, quantity, amount);
 
         // 扣减 钱包余额
-        walletService.decreaseUserWalletAmount(user.getId(), amount, order.getId());
+        walletService.decreaseUserWalletAmountByOrder(user.getId(), amount, order.getId());
 
         return R.ok(order.getId());
     }
