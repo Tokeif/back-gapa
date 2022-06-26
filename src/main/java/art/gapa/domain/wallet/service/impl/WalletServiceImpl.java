@@ -55,4 +55,28 @@ public class WalletServiceImpl implements WalletService {
         transactionRepository.save(transaction);
     }
 
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public WalletTransaction increaseUserWalletAmount(long userId, BigDecimal amount) {
+        Wallet wallet = repository.findByUserId(userId);
+        wallet.increaseAmount(amount);
+        WalletTransaction transaction = WalletTransaction.create(wallet.getId(), 0,
+                WalletTransaction.Type.INCOME, amount, wallet.getAmount());
+        repository.save(wallet);
+        transactionRepository.save(transaction);
+        return transaction;
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public WalletTransaction decreaseUserWalletAmount(long userId, BigDecimal amount) {
+        Wallet wallet = repository.findByUserId(userId);
+        wallet.decreaseAmount(amount);
+        WalletTransaction transaction = WalletTransaction.create(wallet.getId(), 0,
+                WalletTransaction.Type.OUTGO, amount, wallet.getAmount());
+        repository.save(wallet);
+        transactionRepository.save(transaction);
+        return transaction;
+    }
+
 }
