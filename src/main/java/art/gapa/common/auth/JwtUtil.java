@@ -28,7 +28,7 @@ public class JwtUtil {
                 .claim("phone", user.getPhone())
                 .setId(UUID.randomUUID().toString())
                 .setIssuedAt(now())
-                .setExpiration(Date.from(Instant.now().plus(1, ChronoUnit.MINUTES)))
+                .setExpiration(Date.from(Instant.now().plus(1, ChronoUnit.HOURS)))
                 .signWith(SignatureAlgorithm.HS256, SIGN)
                 .compact();
     }
