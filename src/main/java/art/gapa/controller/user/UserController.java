@@ -37,9 +37,9 @@ public class UserController extends BaseController {
 
     private final WalletService walletService;
 
-    @GetMapping("/personal-info")
-    @Operation(summary = "个人信息")
-    public R<UserInfo> personalInfo() {
+    @GetMapping("/info")
+    @Operation(summary = "个人信息", tags = USER)
+    public R<UserInfo> info() {
         LoginUser loginUser = loginUser();
         UserInfo user = repository.findById(loginUser.getId())
                 .orElseThrow(() -> new IllegalArgumentException("用户不存在"));
