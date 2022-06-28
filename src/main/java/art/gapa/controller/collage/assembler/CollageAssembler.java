@@ -37,6 +37,7 @@ public interface CollageAssembler {
 
     @Mapping(target = "id", source = "i.id")
     @Mapping(target = "seriesName", source = "i.type.series.name")
+    @Mapping(target = "autherName", source = "i.type.series.autherName")
     @Mapping(target = "typeName", source = "i.type.name")
     @Mapping(target = "picture", source = "i.type.picture")
     @Mapping(target = "releaseQuantity", source = "i.type.releaseQuantity")
@@ -45,6 +46,7 @@ public interface CollageAssembler {
 
     @Mapping(target = "id", source = "i.id")
     @Mapping(target = "seriesName", source = "i.type.series.name")
+    @Mapping(target = "autherName", source = "i.type.series.autherName")
     @Mapping(target = "typeName", source = "i.type.name")
     @Mapping(target = "picture", source = "i.type.picture")
     @Mapping(target = "price", source = "i.price")

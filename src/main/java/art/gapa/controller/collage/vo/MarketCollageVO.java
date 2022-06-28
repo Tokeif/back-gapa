@@ -19,6 +19,9 @@ public class MarketCollageVO {
     @Schema(title = "系列名")
     private String seriesName;
 
+    @Schema(title = "系列作者名")
+    private String autherName;
+
     @Schema(title = "新品名")
     private String typeName;
 
