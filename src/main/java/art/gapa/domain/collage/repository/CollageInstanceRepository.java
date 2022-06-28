@@ -26,7 +26,10 @@ public interface CollageInstanceRepository extends BaseRepository<CollageInstanc
 
     List<CollageInstance> findAllByUserIdOrderByIdDesc(PageRequest pageRequest, long userId);
 
-    @Query("SELECT i FROM CollageInstance i WHERE i.status = :status AND i.type.name LIKE :name% ORDER BY i.id DESC")
+    /**
+     * TODO: 完善按寄售时间倒叙排序
+     */
+    @Query("SELECT i FROM CollageInstance i WHERE i.status = :status AND i.type.name LIKE :name% ORDER BY i.updatedAt DESC")
     List<CollageInstance> searchByStatus(PageRequest pageRequest, String name, CollageInstance.Status status);
 
     Optional<CollageInstance> findByIdAndUserId(long id, long userId);
